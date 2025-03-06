@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { vote } from '../reducers/anecdoteReducer'
-import { filterChange } from '../reducers/filterReducer'
 
 // eslint-disable-next-line react/prop-types
 const Anecdote = ({ content, handleClick, votes }) => {
