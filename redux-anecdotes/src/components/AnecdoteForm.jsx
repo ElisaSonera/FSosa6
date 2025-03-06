@@ -1,5 +1,3 @@
-//kaikki anekdootin luomiseen liittyvä logiikka tänne
-
 import { useDispatch } from 'react-redux'
 import { createAnecdote } from '../reducers/anecdoteReducer'
 
