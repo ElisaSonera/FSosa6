@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { vote } from '../reducers/anecdoteReducer'
+import { filterChange } from '../reducers/filterReducer'
 
 // eslint-disable-next-line react/prop-types
 const Anecdote = ({ content, handleClick, votes }) => {
@@ -13,11 +14,19 @@ const Anecdote = ({ content, handleClick, votes }) => {
 
 const Anecdotes = () => {
   const dispatch = useDispatch()
-  const anecdotes = useSelector((state) => state)
+  const filter = useSelector(state => state.filter)
+
+  const filterAnecdotes = useSelector(state => {
+    if (state.filter === 'ALL') {
+      return state.anecdotes
+    }
+    return state.anecdotes.filter(anecdote =>
+      anecdote.content.includes(filter))
+  })
 
   return (
     <ul>
-      {anecdotes.map((anecdote) => (
+      {filterAnecdotes.map((anecdote) => (
         <Anecdote
           key={anecdote.id}
           content={anecdote.content}
